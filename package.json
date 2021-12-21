@@ -1,16 +1,79 @@
 {
   "name": "magitrack",
   "version": "1.0.0",
-  "description": "A price tracker for Magic: The Gathering",
-  "main": "index.js",
+  "private": true,
+  "main": "main.js",
   "repository": "github.com/bvoo/magitrack",
   "author": "bvoo",
   "license": "MIT",
-  "private": true,
-  "dependencies": {
-    "scryfall": "^0.9.7"
+  "build": {
+    "icon": "public/favicon.png",
+    "productName": "MagiTrack",
+    "files": [
+      "public/**/*",
+      "main.js",
+      "preload.js"
+    ],
+    "win": {},
+    "linux": {},
+    "mac": {}
   },
   "scripts": {
-    "dev": "node index.js"
-  }
+    "svelte-build": "cross-env NODE_ENV=production webpack",
+    "svelte-dev": "webpack serve --history-api-fallback",
+    "start": "serve public --listen 5969 --single",
+    "electron": "wait-on http://localhost:5969 && electron .",
+    "electron-dev": "concurrently \"yarn run svelte-dev\" \"yarn run electron\"",
+    "preelectron-pack": "yarn run svelte-build",
+    "electron-pack": "electron-builder",
+    "build": "yarn run svelte-build",
+    "dev": "yarn run electron-dev",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "dependencies": {
+    "dayjs": "^1.10.7",
+    "electron-serve": "^1.1.0",
+    "serve": "^13.0.2",
+    "svelte-material-icons": "^1.0.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/plugin-transform-runtime": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/runtime": "^7.16.5",
+    "@tsconfig/svelte": "^2.0.1",
+    "@types/css-minimizer-webpack-plugin": "^3.2.1",
+    "@types/mini-css-extract-plugin": "^2.4.0",
+    "@types/webpack-dev-server": "^4.5.0",
+    "autoprefixer": "^10.4.0",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "concurrently": "^6.4.0",
+    "core-js": "^3.19.3",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.5.1",
+    "css-minimizer-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "postcss": "8.4.5",
+    "postcss-loader": "^6.2.1",
+    "regenerator-runtime": "^0.13.9",
+    "require-json5": "^1.1.0",
+    "sass": "^1.45.0",
+    "sass-loader": "^11.1.1",
+    "svelte": "^3.44.3",
+    "svelte-check": "^1.6.0",
+    "svelte-loader": "^3.1.2",
+    "svelte-preprocess": "^4.10.0",
+    "svelte-quicksearch-bar": "^1.0.4",
+    "ts-loader": "^9.2.6",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4",
+    "wait-on": "^6.0.0",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }

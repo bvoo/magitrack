@@ -1,0 +1,37 @@
+$ui-primary: #ab47bc;
+$ui-primary-light: #df78ef;
+$ui-primary-dark: #790e8b;
+
+$ui-secondary: #42a5f5;
+$ui-secondary-light: #80d6ff;
+$ui-secondary-dark: #0077c2;
+
+$ui-primary-text: #fff;
+$ui-secondary-text: #000;
+
+$ui-background: #2e2e2e;
+$ui-background-light: #3e3e3e;
+$ui-background-dark: #1e1e1e;
+
+$ui-danger: #f44336;
+$ui-success: #4caf50;
+
+:export {
+    ui-primary: $ui-primary;
+    ui-primary-light: $ui-primary-light;
+    ui-primary-dark: $ui-primary-dark;
+
+    ui-secondary: $ui-secondary;
+    ui-secondary-light: $ui-secondary-light;
+    ui-secondary-dark: $ui-secondary-dark;
+
+    ui-primary-text: $ui-primary-text;
+    ui-secondary-text: $ui-secondary-text;
+
+    ui-background: $ui-background;
+    ui-background-light: $ui-background-light;
+    ui-background-dark: $ui-background-dark;
+
+    ui-danger: $ui-danger;
+    ui-success: $ui-success;
+}

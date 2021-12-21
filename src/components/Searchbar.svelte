@@ -1,0 +1,31 @@
+<script>
+import QuickSearchBar from "./QuickSearchBar.svelte";
+
+const onPick = e => selectedOption = e.detail;
+
+import { createEventDispatcher } from 'svelte';
+
+const dispatch = createEventDispatcher();
+
+export const optionClicked = page => dispatch('change', page);
+
+const options = [
+    {label: "Search", type: "search"},
+    {label: "Home", type: "home"},
+    {label: "Wishlist", type: "wishlist"},
+    {label: "Collection", type: "collection"},
+];
+
+let selectedOption;
+
+
+</script>
+
+<QuickSearchBar {options} on:pick={onPick} keys={['label']} on:pick={() => optionClicked({ type: selectedOption.type, value: 'switch' })}/>
+
+<p>Press CTRL + K to open the quick switcher</p>
+<p>Selected: {JSON.stringify(selectedOption)}</p>
+
+<style lang="scss">
+
+</style>

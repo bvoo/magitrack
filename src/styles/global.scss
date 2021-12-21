@@ -1,0 +1,40 @@
+@import './_colors.scss';
+@import './theme';
+
+body {
+  background-color: $ui-background;
+  color: $ui-primary-text;
+  margin: 0;
+
+  height: 100vh;
+  width: 100%;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  overflow-y: scroll;
+  background-color: $ui-background;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  overflow-y: scroll;
+  background-color: $ui-background;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: $ui-primary;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $ui-secondary $ui-background;
+  user-select: none;
+}
