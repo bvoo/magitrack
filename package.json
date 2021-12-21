@@ -1,0 +1,16 @@
+{
+  "name": "magitrack",
+  "version": "1.0.0",
+  "description": "A price tracker for Magic: The Gathering",
+  "main": "index.js",
+  "repository": "github.com/bvoo/magitrack",
+  "author": "bvoo",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "scryfall": "^0.9.7"
+  },
+  "scripts": {
+    "dev": "node index.js"
+  }
+}
