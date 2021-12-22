@@ -23,7 +23,6 @@ let selectedOption;
 
 <QuickSearchBar {options} on:pick={onPick} keys={['label']} on:pick={() => optionClicked({ type: selectedOption.type, value: 'switch' })}/>
 
-<p>Press CTRL + K to open the quick switcher</p>
 <p>Selected: {JSON.stringify(selectedOption)}</p>
 
 <style lang="scss">

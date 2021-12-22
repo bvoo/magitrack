@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, dialog } = require('electron');
+const { app, BrowserWindow, dialog, Menu } = require('electron');
 const path = require('path');
 const serve = require('electron-serve');
 const { ipcMain } = require('electron/main');
@@ -27,15 +27,17 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js'),
-      nativeWindowOpen: true
+      nativeWindowOpen: true,
       // enableRemoteModule: true,
-      // contextIsolation: false,
+      contextIsolation: false,
     },
     resizable: true,
     icon: path.join(__dirname, 'public/favicon.png'),
     show: false
   });
 
+  mainWindow.setMenuBarVisibility(false);
+  
   // This block of code is intended for development purpose only.
   // Delete this entire block of code when you are ready to package the application.
   if (isDev()) {

@@ -16,6 +16,27 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 }
 
+.scroller { 
+    overflow-y: auto;
+}
+
+pre {
+  height: 100%;
+  width: 100%;
+
+  overflow: auto;
+}
+
+.flex-column {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.flex-row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 ::-webkit-scrollbar-track {
   border-radius: 10px;
   overflow-y: scroll;

@@ -52,6 +52,15 @@ const config: Configuration = {
     bundle: [...stylesheets, './src/main.ts']
   },
   resolve: {
+    fallback: {
+        assert: require.resolve('assert'),
+        console: require.resolve('console-browserify'),
+        constants: require.resolve('constants-browserify'),
+        crypto: require.resolve('crypto-browserify'),
+        events: require.resolve('events'),
+        http: require.resolve('stream-http'),
+        https: require.resolve('https-browserify'),
+    },
     alias: {
       // Note: Later in this config file, we'll automatically add paths from `tsconfig.compilerOptions.paths`
       svelte: path.resolve('./node_modules', 'svelte')
