@@ -150,7 +150,7 @@
       top: 10%;
       width: 80%;
       padding: 10px;
-      background-color: #2e2e2edd;
+      background-color: #2e2e2e;
     }
     input {
       width: 100%;
@@ -159,6 +159,7 @@
     .list {
       max-height: 500px;
       overflow-y: auto;
+      outline: none;
     }
     .list,
     .list li {
@@ -166,17 +167,21 @@
       padding: 0;
       text-indent: 0;
       list-style-type: none;
+      outline: none;
     }
     .list li {
       height: 14px;
       line-height: 14px;
       padding: 14px;
+      outline: none;
     }
     .list li:focus {
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.2);
+      outline: none;
     }
     .list:not(:focus-within) > :first-child {
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.2);
+      outline: none;
     }
   </style>
   

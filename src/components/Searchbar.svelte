@@ -17,14 +17,5 @@ const options = [
 ];
 
 let selectedOption;
-
-
 </script>
-
 <QuickSearchBar {options} on:pick={onPick} keys={['label']} on:pick={() => optionClicked({ type: selectedOption.type, value: 'switch' })}/>
-
-<p>Selected: {JSON.stringify(selectedOption)}</p>
-
-<style lang="scss">
-
-</style>

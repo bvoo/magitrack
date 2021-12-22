@@ -4,7 +4,7 @@
   import Card from '../components/Card.svelte';
 
   let searchValue = '';
-  let card = {};
+  
   const c = {
     name: 'based',
     imageUrl:
@@ -13,11 +13,7 @@
   let cards = [c, c, c, c, c, c, c, c, c, c, c];
 
   async function onClick() {
-    let res = await searchCard(searchValue).then(card => {
-      console.log('card: ', card);
-      return card;
-    });
-    return res;
+    return await searchCard(searchValue);
   }
 
   /**
@@ -38,14 +34,17 @@
     };
   }
 
+  // TODO: make this query a local database instead of scryfall
+  // TODO: do this one at a time
   async function searchCard(cardName) {
     try {
+      cards = [];
+      searchValue = '';
+
       let data = await scryfall.autocomplete(cardName);
-      console.log('search:', data);
 
       for (let i = 0; i < data.length; i++) {
         const search = await getCardByName(data[i]);
-        console.log('AWAWAWAA: ', search);
         cards.push(mapCard(search));
         await new Promise(resolve => setTimeout(resolve, 200));
       }
@@ -60,26 +59,33 @@
     try {
       return await scryfall.getCardByName(cardName, { fuzzy: true });
     } catch (err) {
-      console.log('get error:', err); // undefined sadge
+      console.log('get error:', err);
       return {};
     }
   }
+
+  const onKeyPress = e => {
+    if (e.charCode === 13) {
+        onClick();
+    }
+  };
 </script>
 
 <section class="flex-column">
   <h1>Search</h1>
-  <span>{searchValue}</span>
   <div class="flex-row search">
     <input
       bind:value={searchValue}
+      on:keypress={onKeyPress}
       type="search"
       id="search"
       placeholder="Carrion Feeder"
     />
-    <button on:click={onClick}>
+    <button on:click={onClick} >
       <Scale size="1em" />
     </button>
   </div>
+  <div class="spacer" />
 
   <div class="scroller">
     <div class="card-grid">
@@ -93,26 +99,29 @@
 </section>
 
 <style lang="scss">
+@import '../styles/_colors.scss';
   section,
   section > div {
     margin: auto;
-    width: 80%;
+    width: 90%;
     height: 100%;
   }
 
   .spacer {
-    height: 100px;
+    height: 25px;
   }
   .card-grid {
     display: grid;
     grid-template-columns: repeat(
       auto-fit,
-      minmax(220px, 1fr)
+      minmax(210px, 1fr)
     );
     grid-gap: 20px;
     grid-auto-rows: auto;
 
     place-items: center;
+
+    margin: 10px;
   }
   .search {
     flex-grow: 0;
